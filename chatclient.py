@@ -13,10 +13,10 @@ msg = ''
 user = input("Username: ")
 
 
-def toulisten(threadname, delay):
+def always_listen(threadname, delay):
     while msg != 'quit':
-        recu = ('\n'+s.recv(1024).decode())
-        print(recu)
+        received = ('\n'+s.recv(1024).decode())
+        print(received)
 
 
 def prompt():
@@ -25,7 +25,7 @@ def prompt():
     s.sendall(msg.encode())
 
 
-_thread.start_new_thread(toulisten, ("Thread1", 2) )
+_thread.start_new_thread(always_listen, ("Thread1", 2) )
 while msg != 'quit':
     prompt()
 
