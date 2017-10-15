@@ -21,11 +21,11 @@ msg = "\nThank you for connecting"
 user = input("Username: ")
 
 
-def toulisten(threadname, delay):
+def always_listen(threadname, delay):
 	while msgsend != 'quit':
-		recu = ('\n'+c.recv(1024).decode())
+		received = ('\n'+c.recv(1024).decode())
 
-		print(recu)
+		print(received)
 
 
 def prompt():
@@ -40,7 +40,7 @@ while True:
 	print ('Got connection from', addr , '\n')
 	c.sendto(msg.encode(), addr)
 
-	_thread.start_new_thread(toulisten, ("Thread1", 2, ) )
+	_thread.start_new_thread(always_listen, ("Thread1", 2, ) )
 	while msgsend != 'quit':
 		prompt()
 		
